@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Fleet & Services - Chimes Crane Hire</title>
+    <meta name="description" content="Explore our comprehensive fleet of 8-275 ton Tadano cranes and professional lifting services. Book your crane hire in Johannesburg today.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* PRODUCTS PAGE SPECIFIC STYLES */
+        .products-hero {
+            position: relative;
+            height: 70vh;
+            background: linear-gradient(135deg, #0056b3 0%, #003d82 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .products-hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: url('https://www.chimescranes.co.za/wp-content/uploads/2017/01/IMG-20160505-WA0002.jpg') center/cover;
+            opacity: 0.15;
+            animation: heroZoom 20s infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .products-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            max-width: 900px;
+            padding: 40px;
+        }
+
+        .products-hero h1 {
+            font-size: 4.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 20px rgba(0,0,0,0.5);
+            animation: slideInDown 0.8s ease;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FILTER TABS */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px auto;
+            flex-wrap: wrap;
+            max-width: 1200px;
+        }
+
+        .filter-tab {
+            padding: 15px 35px;
+            background: #fff;
+            border: 3px solid #0056b3;
+            border-radius: 50px;
+            color: #0056b3;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .filter-tab:hover {
+            background: #0056b3;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,86,179,0.3);
+        }
+
+        .filter-tab.active {
+            background: #0056b3;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(0,86,179,0.4);
+        }
+
+        /* CRANE CARDS */
+        .crane-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 50px auto;
+            max-width: 1400px;
+            padding: 0 20px;
+        }
+
+        .crane-card {
+            background: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .crane-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0056b3, #00a8ff);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .crane-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .crane-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,86,179,0.2);
+        }
+
+        .crane-card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .crane-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .crane-card:hover .crane-card-image img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .crane-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .crane-card-content {
+            padding: 30px;
+        }
+
+        .crane-card h3 {
+            font-size: 2em;
+            color: #0056b3;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .crane-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .spec-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .spec-item:hover {
+            background: linear-gradient(135deg, #0056b3, #003d82);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .spec-label {
+            font-size: 0.85em;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .spec-item:hover .spec-label {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .spec-value {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #0056b3;
+        }
+
+        .spec-item:hover .spec-value {
+            color: #fff;
+        }
+
+        .crane-features {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .crane-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .crane-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+            color: #555;
+        }
+
+        .crane-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0056b3;
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+
+        .crane-card-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: linear-gradient(135deg, #0056b3, #003d82);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,86,179,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,86,179,0.4);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            background: #fff;
+            color: #0056b3;
+            padding: 15px 25px;
+            border: 2px solid #0056b3;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #0056b3;
+            color: #fff;
+        }
+
+        /* SERVICES SECTION */
+        .services-showcase {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            padding: 100px 20px;
+            margin: 80px auto;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-showcase::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,86,179,0.2), transparent);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            background: rgba(0,86,179,0.2);
+            border-color: #0056b3;
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            margin: 80px auto;
+            max-width: 100%;
+            border-radius: 30px;
+        }
+
+        .comparison-table {
+            max-width: 1200px;
+            margin: 50px auto;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #0056b3, #003d82);
+            color: #fff;
+            padding: 20px;
+            font-size: 1.2em;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            transition: background 0.3s ease;
+        }
+
+        .comparison-table tr:hover td {
+            background: #f8f9fa;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .products-hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .crane-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-tabs {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            
+            .crane-specs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Chimes Cranes</a>
+            <div class="hamburger">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products/Services</a></li>
+                    <li><a href="safety.html">Safety</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="products-hero">
+        <div class="products-hero-content">
+            <h1>Our Fleet & Services</h1>
+            <p style="font-size: 1.5em; margin-bottom: 30px;">Premium Tadano cranes from 8 to 275 tons. German engineering, Japanese precision.</p>
+            <a href="#fleet" class="btn" style="background: #fff; color: #0056b3; margin-right: 15px;">Explore Fleet</a>
+            <a href="contact.html" class="btn" style="background: transparent; border: 2px solid #fff;">Get Quote</a>
+        </div>
+    </section>
+
+    <!-- FILTER TABS -->
+    <section>
+        <h2 style="text-align: center; margin-top: 80px;">Browse Our Fleet</h2>
+        <p style="text-align: center; color: #666; max-width: 800px; margin: 20px auto 0;">Select a category to find the perfect crane for your project</p>
+        
+        <div class="filter-tabs">
+            <div class="filter-tab active" data-filter="all">All Cranes</div>
+            <div class="filter-tab" data-filter="truck-mount">Truck Mount</div>
+            <div class="filter-tab" data-filter="all-terrain">All Terrain</div>
+            <div class="filter-tab" data-filter="heavy-lift">Heavy Lift (100T+)</div>
+        </div>
+    </section>
+
+    <!-- CRANE FLEET GRID -->
+    <div class="crane-grid" id="fleet">
+        <!-- 8-15 TON TRUCK MOUNT -->
+        <div class="crane-card" data-category="truck-mount">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/01/IMG-20120823-00205-1.jpg" alt="8-15 Ton Truck Mount">
+                <span class="crane-badge">Popular</span>
+            </div>
+            <div class="crane-card-content">
+                <h3>8-15 Ton Truck Mount</h3>
+                <p style="color: #666; margin-bottom: 20px;">Perfect for urban sites and tight access projects</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">8-15T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Radius</div>
+                        <div class="spec-value">10-15m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">Tadano TM</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">Truck Mount</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Fast road travel speeds</li>
+                        <li>Compact footprint</li>
+                        <li>Ideal for HVAC installations</li>
+                        <li>Quick setup time</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 25 TON ALL TERRAIN -->
+        <div class="crane-card" data-category="all-terrain">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/01/IMG-20160505-WA0002.jpg" alt="25 Ton All Terrain">
+            </div>
+            <div class="crane-card-content">
+                <h3>25 Ton All Terrain</h3>
+                <p style="color: #666; margin-bottom: 20px;">Versatile performance on any terrain</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">25T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Boom</div>
+                        <div class="spec-value">31.2m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">ATF 25G</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">All Terrain</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Independent suspension</li>
+                        <li>Excellent maneuverability</li>
+                        <li>Telecom & construction ready</li>
+                        <li>Rough terrain capable</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 30 TON TRUCK MOUNT -->
+        <div class="crane-card" data-category="truck-mount">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/02/IMG-20110310-00052-e1486548224200.jpg" alt="30 Ton Truck Mount">
+                <span class="crane-badge">New</span>
+            </div>
+            <div class="crane-card-content">
+                <h3>30 Ton Truck Mount</h3>
+                <p style="color: #666; margin-bottom: 20px;">Cost-effective solution for medium lifts</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">30T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Boom</div>
+                        <div class="spec-value">38m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">TL300E</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">Truck Mount</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Standard truck chassis</li>
+                        <li>Quick deployment</li>
+                        <li>Building construction specialist</li>
+                        <li>Container handling expert</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 40-55 TON ALL TERRAIN -->
+        <div class="crane-card" data-category="all-terrain">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/02/construction-14-e1486547976132.jpg" alt="40-55 Ton All Terrain">
+            </div>
+            <div class="crane-card-content">
+                <h3>40-55 Ton All Terrain</h3>
+                <p style="color: #666; margin-bottom: 20px;">Heavy construction powerhouse</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">40-55T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Boom</div>
+                        <div class="spec-value">40m+</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">ATF 40/55G</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">All Terrain</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Jib extension available</li>
+                        <li>Steel erection specialist</li>
+                        <li>Industrial plant ready</li>
+                        <li>Precast concrete expert</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 70-100 TON ALL TERRAIN -->
+        <div class="crane-card" data-category="all-terrain heavy-lift">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/01/silo-tanks-4.jpg" alt="70-100 Ton All Terrain">
+            </div>
+            <div class="crane-card-content">
+                <h3>70-100 Ton All Terrain</h3>
+                <p style="color: #666; margin-bottom: 20px;">Industrial & petrochemical specialist</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">70-100T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Boom</div>
+                        <div class="spec-value">50-52m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">ATF 70/100G</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">All Terrain</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Heavy module handling</li>
+                        <li>Mining equipment moves</li>
+                        <li>Bridge construction capable</li>
+                        <li>Wind energy components</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 220 TON HEAVY LIFT -->
+        <div class="crane-card" data-category="all-terrain heavy-lift">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/01/20161031_114846_resized-1.jpg" alt="220 Ton All Terrain">
+                <span class="crane-badge">Premium</span>
+            </div>
+            <div class="crane-card-content">
+                <h3>220 Ton All Terrain</h3>
+                <p style="color: #666; margin-bottom: 20px;">Mega project solution</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">220T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Boom</div>
+                        <div class="spec-value">68m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">With Jib</div>
+                        <div class="spec-value">126m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">ATF 220G-5</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Tandem lift capable</li>
+                        <li>Refinery operations</li>
+                        <li>Power plant construction</li>
+                        <li>Extreme reach projects</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 275 TON FLAGSHIP -->
+        <div class="crane-card" data-category="all-terrain heavy-lift">
+            <div class="crane-card-image">
+                <img src="https://www.chimescranes.co.za/wp-content/uploads/2017/01/IMG_7850-1-scaled.jpg" alt="275 Ton All Terrain">
+                <span class="crane-badge">Flagship</span>
+            </div>
+            <div class="crane-card-content">
+                <h3>275 Ton All Terrain</h3>
+                <p style="color: #666; margin-bottom: 20px;">Our most powerful crane</p>
+                
+                <div class="crane-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Capacity</div>
+                        <div class="spec-value">275T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Max Boom</div>
+                        <div class="spec-value">70m+</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Model</div>
+                        <div class="spec-value">ATF 275G</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Type</div>
+                        <div class="spec-value">Heavy Lift</div>
+                    </div>
+                </div>
+
+                <div class="crane-features">
+                    <ul>
+                        <li>Extreme heavy lifting</li>
+                        <li>Power plant specialist</li>
+                        <li>Industrial mega projects</li>
+                        <li>Maximum capacity leader</li>
+                    </ul>
+                </div>
+
+                <div class="crane-card-actions">
+                    <a href="contact.html" class="btn-primary">Get Quote</a>
+                    <a href="#" class="btn-secondary">Specs PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES SHOWCASE -->
+    <section class="services-showcase">
+        <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; padding: 0 20px;">
+            <h2 style="color: #fff; text-align: center; margin-bottom: 20px;">Complete Lifting Solutions</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 60px; font-size: 1.2em; max-width: 800px; margin-left: auto; margin-right: auto;">More than just crane hire - we're your complete heavy lifting partner</p>
+            
+            <div class="grid">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Crane Hire</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Short and long-term rentals with flexible contracts. Hourly, daily, weekly, or monthly rates available.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>Rigging Services</h3>
+                    <p style="color: rgba(255,255,255,0.8);">CAD-planned rigging solutions with certified equipment. Load testing and engineering support included.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Heavy Lifting</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Tandem lifts, abnormal loads, and specialized transport. Expert planning for complex operations.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Project Management</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Turnkey solutions from assessment to completion. Full site surveys and risk management.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🚛</div>
+                    <h3>Transport Services</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Crane trucks and standard trucks for equipment delivery and on-site support.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>24/7 Support</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Emergency response available. Technical support and operator assistance around the clock.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison-section">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Quick Comparison Guide</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">Find the right crane for your project at a glance</p>
+        
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crane Type</th>
+                        <th>Capacity</th>
+                        <th>Best For</th>
+                        <th>Key Feature</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>8-15T Truck Mount</strong></td>
+                        <td>8-15 tons</td>
+                        <td>Urban sites, HVAC, tight access</td>
+                        <td>Quick setup, compact</td>
+                    </tr>
+                    <tr>
+                        <td><strong>25T All Terrain</strong></td>
+                        <td>25 tons</td>
+                        <td>Construction, telecoms</td>
+                        <td>Versatile, all-terrain</td>
+                    </tr>
+                    <tr>
+                        <td><strong>30T Truck Mount</strong></td>
+                        <td>30 tons</td>
+                        <td>Building, containers</td>
+                        <td>Cost-effective</td>
+                    </tr>
+                    <tr>
+                        <td><strong>40-55T All Terrain</strong></td>
+                        <td>40-55 tons</td>
+                        <td>Heavy construction, steel</td>
+                        <td>Jib extensions available</td>
+                    </tr>
+                    <tr>
+                        <td><strong>70-100T All Terrain</strong></td>
+                        <td>70-100 tons</td>
+                        <td>Industrial, mining, bridges</td>
+                        <td>Heavy modules, long reach</td>
+                    </tr>
+                    <tr>
+                        <td><strong>220T All Terrain</strong></td>
+                        <td>220 tons</td>
+                        <td>Refineries, mega projects</td>
+                        <td>126m with jib, tandem capable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>275T All Terrain</strong></td>
+                        <td>275 tons</td>
+                        <td>Power plants, extreme lifts</td>
+                        <td>Maximum capacity, flagship</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="font-size: 1.2em; color: #333; margin-bottom: 30px;">Still not sure which crane you need?</p>
+            <a href="contact.html" class="btn" style="background: #0056b3; color: #fff; padding: 18px 45px;">Talk to Our Experts</a>
+        </div>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD RESOURCES -->
+    <section style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 80px 20px; border-radius: 30px; margin: 80px auto; max-width: 1200px;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Download Resources</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 50px;">Get detailed specifications and planning guides</p>
+        
+        <div class="grid">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 4em; margin-bottom: 20px;">📊</div>
+                <h3>Load Charts</h3>
+                <p>Complete load charts for all models with various boom configurations and outrigger positions.</p>
+                <a href="contact.html" class="btn" style="margin-top: 20px;">Request Load Charts</a>
+            </div>
+            
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 4em; margin-bottom: 20px;">📘</div>
+                <h3>Technical Specs</h3>
+                <p>Detailed specifications including dimensions, weights, transport requirements, and capabilities.</p>
+                <a href="contact.html" class="btn" style="margin-top: 20px;">Download Specs</a>
+            </div>
+            
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 4em; margin-bottom: 20px;">🎯</div>
+                <h3>Planning Guide</h3>
+                <p>Comprehensive guide for lift planning, site preparation, and access requirements.</p>
+                <a href="contact.html" class="btn" style="margin-top: 20px;">Get Planning Guide</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section style="background: linear-gradient(135deg, #0056b3, #003d82); color: #fff; padding: 100px 20px; text-align: center; border-radius: 30px; margin: 80px auto; max-width: 1200px;">
+        <h2 style="color: #fff; font-size: 3em; margin-bottom: 20px;">Ready to Lift Your Project?</h2>
+        <p style="font-size: 1.4em; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">Get a free quote within 24 hours. Our experts are ready to help you choose the perfect crane.</p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="contact.html" class="btn" style="background: #fff; color: #0056b3; padding: 20px 50px; font-size: 1.2em;">Get Free Quote</a>
+            <a href="tel:+27116261110" class="btn" style="background: transparent; border: 3px solid #fff; color: #fff; padding: 20px 50px; font-size: 1.2em;">Call Now</a>
+        </div>
+        
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 2px solid rgba(255,255,255,0.2);">
+            <p style="font-size: 1.1em; color: rgba(255,255,255,0.8);">
+                <strong>Why Choose Chimes?</strong><br>
+                23+ Years Experience • BEE Level 5 • 90% Tadano Fleet • 24/7 Support • Full Insurance
+            </p>
+        </div>
+    </section>
+
+    <a href="https://wa.me/27116261110?text=Hi%20Chimes%20Crane%20Hire%2C%20I'm%20inquiring%20from%20your%20website" class="whatsapp-btn" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Chimes Crane Hire</h3>
+                <p>South Africa's trusted mobile crane hire specialists since 2003. Safety, reliability, and excellence in every lift.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Fleet & Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p>Nasmith Avenue, Jupiter Industrial<br>Germiston, Gauteng</p>
+                <p>Tel: +27 11 626 1110<br>Email: office@chimes.co.za</p>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <p>Stay connected for updates and projects.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Copyright © Chimes Cranes 2026. Website design by M.A. Bendall.
+        </div>
+    </footer>
+    
+    <script src="scripts.js" defer></script>
+    <script>
+        // FILTER FUNCTIONALITY
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const craneCards = document.querySelectorAll('.crane-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+
+                craneCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        const categories = card.dataset.category.split(' ');
+                        if (categories.includes(filter)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add initial transition styles
+        craneCards.forEach(card => {
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        });
+    </script>
+</body>
+</html>
