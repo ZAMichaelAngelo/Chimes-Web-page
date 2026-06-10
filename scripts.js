@@ -20,14 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ================= HEADER SCROLL EFFECT =================
     const header = document.querySelector('header');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // ================= ACTIVE NAV LINK =================
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -140,6 +142,65 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
             }
+        });
+    });
+});
+
+// ================= UTM CAPTURE + DEMO QUOTE FORM =================
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'gclid'];
+    keys.forEach(k => {
+        if (params.get(k)) sessionStorage.setItem(k, params.get(k));
+    });
+    const src = sessionStorage.getItem('utm_source');
+    const camp = sessionStorage.getItem('utm_campaign');
+
+    // show the attribution chip when the visit came from a (simulated) ad
+    const chip = document.querySelector('.utm-chip');
+    if (chip && (src || camp)) {
+        let txt = 'This visit is being tracked';
+        if (src) txt += ' \u2022 source: ' + src;
+        if (camp) txt += ' \u2022 campaign: "' + camp + '"';
+        chip.querySelector('.utm-text').textContent = txt;
+        chip.classList.add('show');
+    }
+
+    document.querySelectorAll('form.quote-form').forEach(form => {
+        // carry attribution in hidden fields
+        keys.forEach(k => {
+            const inp = form.querySelector('input[name="' + k + '"]');
+            if (inp) inp.value = sessionStorage.getItem(k) || '';
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const get = n => {
+                const el = form.querySelector('[name="' + n + '"]');
+                return el ? el.value.trim() : '';
+            };
+            const panel = document.querySelector('.form-success');
+            if (!panel) return;
+
+            const name = get('name');
+            panel.querySelector('.success-name').textContent =
+                name ? 'Thanks, ' + name.split(' ')[0] + ' — enquiry received.' : 'Enquiry received.';
+
+            const detailBits = [];
+            if (get('crane_size')) detailBits.push(get('crane_size'));
+            if (get('location')) detailBits.push('site: ' + get('location'));
+            if (get('start_date')) detailBits.push('from ' + get('start_date'));
+            panel.querySelector('.success-size').textContent =
+                detailBits.length ? detailBits.join(' \u2022 ') : 'your enquiry details';
+
+            panel.querySelector('.success-attr').textContent =
+                (src || camp)
+                    ? 'the Google Ads click that brought you here (' + [src, camp].filter(Boolean).join(' / ') + ')'
+                    : 'a direct visit — no ad campaign this time';
+
+            form.style.display = 'none';
+            panel.classList.add('show');
+            panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     });
 });
