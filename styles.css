@@ -1,3 +1,53 @@
+/* self-hosted fonts - no third-party dependency */
+@font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/archivo-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('fonts/archivo-800.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Archivo Black';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/archivo-black-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/barlow-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/barlow-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/barlow-700.woff2') format('woff2');
+}
+
+
 :root {
     --green: #279042;        /* Chimes fleet green */
     --green-dark: #1E7434;
@@ -29,7 +79,6 @@ header {
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -117,7 +166,6 @@ nav a:hover::after, nav a.active::after {
         width: 100%;
         height: calc(100vh - 80px);
         background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -140,7 +188,6 @@ nav a:hover::after, nav a.active::after {
     min-height: 550px;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,7 +245,6 @@ nav a:hover::after, nav a.active::after {
 @media (max-width: 768px) {
     .hero {
         height: 70vh;
-        background-attachment: scroll;
     }
     .hero h1 {
         font-size: 2.5em;
@@ -217,17 +263,6 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-}
-
-section.animate {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-section.animate.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 h2 {
@@ -303,7 +338,6 @@ section > p {
 
 .stat-card {
     background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.2);
 }
 
@@ -1174,7 +1208,6 @@ h1, h2 {
         width: 100%;
         height: calc(100vh - 80px);
         background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -1230,4 +1263,12 @@ section.hero:not(.hero-light) > a {
 .refined section.hero > p {
     margin-left: auto;
     margin-right: auto;
+}
+
+/* accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
