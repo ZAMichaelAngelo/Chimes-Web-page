@@ -1189,3 +1189,45 @@ h1, h2 {
 .hero-light p.eyebrow { max-width: none; }
 
 .refined .grid { grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
+
+
+/* inner-page heroes: stacked, padded, centred dark banners */
+section.hero:not(.hero-light) {
+    flex-direction: column;
+    padding: 60px 20px;
+    text-align: center;
+}
+.refined section.hero:not(.hero-light) { text-align: center; }
+section.hero:not(.hero-light) h1 { max-width: 900px; }
+section.hero:not(.hero-light) p { max-width: 700px; }
+
+/* harmonise corner radii with the card language */
+.slider img { border-radius: 12px; }
+.news-card img { border-radius: 12px 12px 0 0; }
+
+/* embedded icon helpers */
+.service-icon svg { display: inline-block; }
+.social-icon svg { display: block; }
+
+/* inner banners: shorter, with a stronger consistent overlay for readability */
+section.hero:not(.hero-light) {
+    height: 54vh;
+    min-height: 430px;
+}
+section.hero:not(.hero-light)::before {
+    background: linear-gradient(165deg, rgba(8, 16, 28, 0.74), rgba(14, 35, 66, 0.55));
+}
+
+/* lift bare hero children above the overlay (about/contact/safety/gallery) */
+section.hero:not(.hero-light) > h1,
+section.hero:not(.hero-light) > p,
+section.hero:not(.hero-light) > a {
+    position: relative;
+    z-index: 2;
+}
+
+/* hero captions stay centred even on refined pages */
+.refined section.hero > p {
+    margin-left: auto;
+    margin-right: auto;
+}
